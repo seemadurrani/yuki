@@ -1,7 +1,9 @@
-FILE := abc
+hello:
+	echo "Hello"
 
-$(FILE): xyz
-	echo $(FILE) > "something"
+build:
+	go build -o bin/main main.go
 
-xyz:
-	echo "xyz" > xyz
+run:
+	go run main.go
+
