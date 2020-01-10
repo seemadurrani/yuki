@@ -1,5 +1,5 @@
 hello:
-	echo "hello April"
+	echo "hello August"
 
 build:
 	go build -o bin/main main.go
