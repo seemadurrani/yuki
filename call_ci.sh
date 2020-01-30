@@ -15,3 +15,4 @@ create_email() {
 
 
 bin/main 
+exit 0
