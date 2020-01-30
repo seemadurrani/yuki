@@ -3,23 +3,8 @@ package main
 import "github.com/go-mail/mail"
 import "io/ioutil"
 import "os"
-import "fmt"
-
-/*
- Change the hard codings to variables
- Aggregate all the smtp info into a struct
- Before build compile & check
 
 
- Get Reciever Email from Env variable
- Get the mail content & attachment as two file variables
-   Ex: mail_file := "email.txt"
-       attach_file := "build.log"
-  Read the mail_file content to a variable called mail_content
-  Send the mail now
-
-  Error checks
-*/
 type EmailUser struct {
 	Username    string
 	Password    string
@@ -37,7 +22,7 @@ func main() {
 	receiver := os.Getenv("RECEIVER")
 	ccUser := os.Getenv("CC_USER")
 	mailFile := os.Getenv("MAIL_FILE")
-	attachFile := onewmail.gos.Getenv("EMAIL_ATTACHMENT")
+	attachFile := os.Getenv("EMAIL_ATTACHMENT")
 	smptPort := 587
 	password := os.Getenv("SMTP_PASSWORD")
 	emailContent, _ := ioutil.ReadFile(mailFile)
