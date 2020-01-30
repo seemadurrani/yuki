@@ -2,7 +2,7 @@ hello:
 	echo "hello April"
 
 build:
-	go build -o bin/main main.go
+	GO111MODULE=on go build -o bin/main main.go
 
 run:
 	go run main.go
