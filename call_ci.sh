@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export UNAME=seema
-
+SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
 MAIL_FILE=email.txt
 MAIL_ATTACHMENT=build.log
