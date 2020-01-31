@@ -18,5 +18,13 @@ create_email() {
 }
 
 
+modify_template(){
+	template_name=template1.html
+
+ sed -i "s/SPECTRO_BRANCH_NAME/$JOB_NAME/"  ${template_name=template1.html}
+ sed -i "s/SPECTRO_BUILD_ID/$BUILDID/"  ${template_name=template1.html}
+}
+
+sleep 600
 bin/main 
 exit 0
