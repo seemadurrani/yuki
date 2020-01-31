@@ -6,6 +6,9 @@ MAILID_FILE=mailid.txt
 MAIL_FILE=email.txt
 MAIL_ATTACHMENT=build.log
 
+
+RECEIVER=$(cat $MAILID_FILE| grep $UNAME| cut -d : -f 2 )
+
 make build
 
 ps -ef > $MAIL_ATTACHMENT
