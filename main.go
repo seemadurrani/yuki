@@ -23,10 +23,14 @@ func main() {
 	receiver := os.Getenv("RECEIVER")
 	ccUser := os.Getenv("CC_USER")
 	mailFile := os.Getenv("MAIL_FILE")
-	attachFile := os.Getenv("EMAIL_ATTACHMENT")
+	attachFile := os.Getenv("MAIL_ATTACHMENT")
 	smptPort := 587
-	password := os.Getenv("SMTP-PASSWORD")
-	emailContent, _ := ioutil.ReadFile(mailFile)
+	password := os.Getenv("SMTP_PASSWORD")
+	emailContent, err := ioutil.ReadFile(mailFile)
+	if ( err != nil ) {
+		panic(err)
+	}
+
 	str1 := BytesToString(emailContent)
 
 	smtpInfo := &EmailUser{
@@ -36,6 +40,7 @@ func main() {
 		smptPort}
 
 	m := mail.NewMessage()
+        m.SetHeader("Subject", "Prow Job Info")
 	m.SetHeader("From", sender)
 	m.SetHeader("To", receiver)
 	m.SetAddressHeader("Cc", ccUser, "The great")
@@ -47,7 +52,7 @@ func main() {
 	fmt.Println("senderaddress:",sender,"receiveraddress:",receiver,"ccaddress:",ccUser,"attachmentfiles:",attachFile)
 
 	d := mail.NewDialer(smtpInfo.EmailServer, smtpInfo.Port, smtpInfo.Username, smtpInfo.Password)
-	if err := d.DialAndSend(m); err != nil {
+	if err = d.DialAndSend(m); err != nil {
 		panic(err)
 	}
 }
