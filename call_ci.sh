@@ -48,7 +48,7 @@ fi
 if [[ $JOB_TYPE == presubmit ]]
 then
 	echo "hai" > manifest.yaml
-	MAIL_FILE=template2.html
+	MAIL_FILE=template22.html
 	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
 fi	
