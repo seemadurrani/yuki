@@ -16,6 +16,8 @@ MAIL_FILE=''
 MAIL_ATTACHMENT=''
 
 
+echo "Seema is trying to send a mail"
+
 modify_template(){
 	template_name=$1
 	sed -i "s/SPECTRO_BRANCH_NAME/$JOB_NAME/"  $template_name
@@ -50,4 +52,5 @@ then
 fi	
 		
 
+echo "The values used were $JOB_TYPE and $MAIL_FILE"
 exit 0
