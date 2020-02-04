@@ -1,22 +1,53 @@
 #!/bin/bash
 
-export UNAME=seema
+
+# BUILD_ID
+# PULL_NUMBER
+# JOB_TYPE
+# JOB_NAME
+# ARTIFACTS
+# REPO_OWNER
+
 SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
-MAIL_FILE=email.txt
-MAIL_ATTACHMENT=build.log
-RECEIVER=$(cat $MAILID_FILE| grep $UNAME| cut -d : -f 2 )
+RECEIVER=$(cat $MAILID_FILE| grep $REPO_OWNER | cut -d : -f 2 )
+CC_USER=shenayakhan94567@gmail.com
+MAIL_FILE=''
+MAIL_ATTACHMENT=''
 
-make build
 
-ps -ef > $MAIL_ATTACHMENT
-
-create_email() {
-
-	ls /etc/ > $MAIL_FILE
-
+modify_template(){
+	template_name=$1
+	sed -i "s/SPECTRO_BRANCH_NAME/$JOB_NAME/"  $template_name
+ 	sed -i "s/SPECTRO_BUILD_ID/$BUILD_ID/"  $template_name
+}
+send_mail() {
+	export SENDER
+	export RECEIVER
+	export MAIL_ATTACHMENT
+	export MAIL_FILE
+	export CC_USER
+	modify_template ${MAIL_FILE}
+	make build
+	bin/main 
 }
 
 
-bin/main 
+true
+if [[ $? -ne 0 ]]
+then
+	MAIL_FILE=template11.html
+	MAIL_ATTACHMENT=build.log	
+	send_mail
+fi
+
+if [[ $JOB_TYPE == postsubmits ]]
+then
+	echo "hai" > manifest.yaml
+	MAIL_FILE=template2.html
+	MAIL_ATTACHMENT=manifest.yaml
+	send_mail
+fi	
+		
+
 exit 0
