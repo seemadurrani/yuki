@@ -39,7 +39,7 @@ send_mail() {
 
 
 true
-if [[ $? -e 0 ]]
+if [[ $? -eq 0 ]]
 then
 	MAIL_FILE=fail.html
 	MAIL_ATTACHMENT=build.log	
