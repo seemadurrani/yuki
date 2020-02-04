@@ -55,5 +55,6 @@ fi
 		
 
 echo "The values used were $JOB_TYPE and $MAIL_FILE"
+env
 
 exit 0
