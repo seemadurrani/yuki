@@ -45,7 +45,7 @@ then
 	send_mail
 fi
 
-if [[ $JOB_TYPE == postsubmit ]]
+if [[ $JOB_TYPE == presubmit ]]
 then
 	echo "hai" > manifest.yaml
 	MAIL_FILE=template2.html
