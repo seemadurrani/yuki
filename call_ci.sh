@@ -39,7 +39,7 @@ send_mail() {
 
 
 true
-if [[ $? -ne 0 ]]
+if [[ $? -eq 0 ]]
 then
 	MAIL_FILE=fail.html
 	MAIL_ATTACHMENT=build.log	
@@ -49,16 +49,7 @@ else
 	MAIL_FILE=success.html
 	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
-fi
-
-if [[ $JOB_TYPE == presubmit ]]
-then
-	echo "hai" > manifest.yaml
-	MAIL_FILE=template22.html
-	MAIL_ATTACHMENT=manifest.yaml
-	send_mail
-fi	
-		
+fi		
 
 echo "The values used were $JOB_TYPE and $MAIL_FILE"
 env
