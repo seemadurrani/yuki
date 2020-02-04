@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Actionable emails e.g. reset password</title>
+<title>Alerts e.g. approaching your limit</title>
 <style>
 
 
@@ -289,45 +289,50 @@ a {
 
 <body itemscope itemtype="http://schema.org/EmailMessage">
 
-<table class="aligncenter content-block" width="100%" cellpadding="0" cellspacing="0" itemprop="action" itemscope itemtype="http://schema.org/ConfirmAction">
+<table class="body-wrap">
+        <tr>
+                <td></td>
+                <td class="container" width="600">
+                        <div class="content">
+                                <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                                <td class="alert alert-warning">
+                                                        Your prow job is <strong>successfully</strong> executed.
+                                                </td>
+                                        </tr>
                                         <tr>
                                                 <td class="content-wrap">
-                                                        <meta itemprop="name" content="Confirm Email"/>
                                                         <table width="100%" cellpadding="0" cellspacing="0">
                                                                 <tr>
                                                                         <td class="content-block">
-                                                                                This email is to inform you about prow job             .
+                                                                                This email is to provide you prow jon info.
                                                                         </td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="content-block">
-                                                                                Please check the below attachment for manifest file.                                    .
+                                                                                Please check the below attachment for manifest file.
                                                                         </td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td class="content-block">
+                                                                         <td                                                                        <td class="content-block">
                                                                                 &mdash; Spectro Cloud
                                                                         </td>
+                  class="aligncenter content-block">Follow <a href="http://mayflower.spectrocloud.com/log?job=ops_build&id=32"><span style="color:red">Link</span></a> for built logs.</td>
+                                                                </tr>
+                                                                <tr>
+                                                                                                                                                <td class="content-block">
+                                                                                &mdash; Spectro Cloud
+                                                                        </td>
+
                                                                 </tr>
                                                         </table>
                                                 </td>
                                         </tr>
                                 </table>
-
-
-          <table width="100%"  border="collapse" >
-                  <tr>
-    <th>BranchName</th>
-    <th>Spectro_Branch_Name</th>
-    <th>BuildID</th>
-    <th>Spectro_Build_Id</th>
-  </tr>
-</table>
-
                                 <div class="footer">
                                         <table width="100%">
                                                 <tr>
-                                                        <td class="aligncenter content-block">Follow <a href="http://mayflower.spectrocloud.com/log?job=ops_build&id=32"><span style="color:red">Link</span></a> for built logs.</td>
+                                                        <td class="aligncenter content-block"><a href="http://www.mailgun.com">Unsubscribe</a> from these alerts.</td>
                                                 </tr>
                                         </table>
                                 </div></div>
@@ -338,5 +343,5 @@ a {
 
 </body>
 </html>
-                                                                                                                                                      60,7          Bot
+                                                                                                                                                      66,7          Bot
 
