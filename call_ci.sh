@@ -16,6 +16,7 @@ MAIL_FILE=''
 MAIL_ATTACHMENT=''
 
 
+ps -f > build.log
 echo "Seema is trying to send a mail"
 
 modify_template(){
@@ -38,8 +39,8 @@ send_mail() {
 }
 
 
-true
-if [[ $? -eq 0 ]]
+false
+if [[ $? -ne 0 ]]
 then
 	MAIL_FILE=fail.html
 	MAIL_ATTACHMENT=build.log	
