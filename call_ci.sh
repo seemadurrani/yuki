@@ -24,6 +24,7 @@ modify_template(){
  	sed -i "s/SPECTRO_BUILD_ID/$BUILD_ID/"  $template_name
 }
 send_mail() {
+		
 	export SENDER
 	export RECEIVER
 	export MAIL_ATTACHMENT
@@ -32,6 +33,7 @@ send_mail() {
 	modify_template ${MAIL_FILE}
 	make build
 	bin/main 
+	echo "hey the mail is sent"	
 }
 
 
@@ -43,7 +45,7 @@ then
 	send_mail
 fi
 
-if [[ $JOB_TYPE == postsubmits ]]
+if [[ $JOB_TYPE == postsubmit ]]
 then
 	echo "hai" > manifest.yaml
 	MAIL_FILE=template2.html
@@ -53,4 +55,5 @@ fi
 		
 
 echo "The values used were $JOB_TYPE and $MAIL_FILE"
+
 exit 0
