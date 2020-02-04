@@ -20,8 +20,9 @@ echo "Seema is trying to send a mail"
 
 modify_template(){
 	template_name=$1
-	sed -i "s/SPECTRO_BRANCH_NAME/$JOB_NAME/"  $template_name
+	sed -i "s/SPECTRO_JOB_NAME/$JOB_NAME/"  $template_name
  	sed -i "s/SPECTRO_BUILD_ID/$BUILD_ID/"  $template_name
+ 	sed -i "s/SPECTRO_PULL_NUMBER/$PULL_NUMBER/"  $template_name
 }
 send_mail() {
 		
@@ -40,8 +41,11 @@ send_mail() {
 true
 if [[ $? -ne 0 ]]
 then
-	MAIL_FILE=template11.html
+	MAIL_FILE=fail.html
 	MAIL_ATTACHMENT=build.log	
+	send_mail
+else
+	MAIL_FILE=success.html
 	send_mail
 fi
 
