@@ -3,10 +3,12 @@
 UNAME=seema
 SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
-MAIL_FILE=template11.html
 RECEIVER=$(cat $MAILID_FILE| grep $UNAME| cut -d : -f 2 )
-MAIL_ATTACHMENT=build.logs
 CC_USER=shenayakhan94567@gmail.com
+MAIL_FILE=template11.html
+MAIL_ATTACHMENT=build.log
+
+
 
 
 ps -ef > $MAIL_ATTACHMENT
@@ -27,6 +29,8 @@ modify_template(){
 # Print all the env variables from CI
 echo $JOB_NAME
 echo $BUILDID
+
+env
 
 
 true
