@@ -46,6 +46,7 @@ then
 	send_mail
 else
 	MAIL_FILE=success.html
+	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
 fi
 
