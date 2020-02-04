@@ -45,6 +45,7 @@ then
 	MAIL_ATTACHMENT=build.log	
 	send_mail
 else
+	echo "executed" > manifest.yaml
 	MAIL_FILE=success.html
 	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
