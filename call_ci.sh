@@ -1,36 +1,26 @@
 #!/bin/bash
 
-UNAME=seema
+
+# BUILD_ID
+# PULL_NUMBER
+# JOB_TYPE
+# JOB_NAME
+# ARTIFACTS
+# REPO_OWNER
+
 SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
-RECEIVER=$(cat $MAILID_FILE| grep $UNAME| cut -d : -f 2 )
+RECEIVER=$(cat $MAILID_FILE| grep $REPO_OWNER | cut -d : -f 2 )
 CC_USER=shenayakhan94567@gmail.com
-MAIL_FILE=template11.html
-MAIL_ATTACHMENT=build.log
-
-
-
-
-ps -ef > $MAIL_ATTACHMENT
-
-create_email() {
-	ls /etc/ > $MAIL_FILE
-}
+MAIL_FILE=''
+MAIL_ATTACHMENT=''
 
 
 modify_template(){
 	template_name=$1
 	sed -i "s/SPECTRO_BRANCH_NAME/$JOB_NAME/"  $template_name
- 	sed -i "s/SPECTRO_BUILD_ID/$BUILDID/"  $template_name
+ 	sed -i "s/SPECTRO_BUILD_ID/$BUILD_ID/"  $template_name
 }
-
-
-
-# Print all the env variables from CI
-echo $JOB_NAME
-echo $BUILDID
-
-env
 
 
 true
@@ -42,6 +32,7 @@ fi
 
 if [[ $JOB_TYPE == periodic ]]
 then
+	echo "hai" > manifest.yaml
 	MAIL_FILE=template2.html
 	MAIL_ATTACHMENT=manifest.yaml
 fi	
