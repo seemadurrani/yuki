@@ -26,6 +26,7 @@ func main() {
 	attachFile := os.Getenv("MAIL_ATTACHMENT")
 	smptPort := 587
 	password := os.Getenv("SMTP_PASSWORD")
+	prnumber := os.Getenv("PULL_NUMBER")
 	emailContent, err := ioutil.ReadFile(mailFile)
 	if ( err != nil ) {
 		panic(err)
@@ -40,12 +41,14 @@ func main() {
 		smptPort}
 
 	m := mail.NewMessage()
-        m.SetHeader("Subject", "Prow Job Info")
+        m.SetHeader("Subject", "Prow Job failed for jet PR" , prnumber)
 	m.SetHeader("From", sender)
 	m.SetHeader("To", receiver)
 	m.SetAddressHeader("Cc", ccUser, "The great")
 	m.SetBody("text/html", str1)
+	if ( len(attachFile) > 0  ) {
 	m.Attach(attachFile)
+        }
 
 
 	fmt.Println("Server:",smtpInfo.EmailServer, "Port:",smtpInfo.Port, "user:",smtpInfo.Username, "pass:",smtpInfo.Password)

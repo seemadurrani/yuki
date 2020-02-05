@@ -11,11 +11,12 @@
 SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
 RECEIVER=$(cat $MAILID_FILE| grep $REPO_OWNER | cut -d : -f 2 )
-CC_USER=shenayakhan94567@gmail.com
+CC_USER=zulfi@spectrocloud.com
 MAIL_FILE=''
 MAIL_ATTACHMENT=''
 
 
+ps -f > build.log
 echo "Seema is trying to send a mail"
 
 modify_template(){
@@ -38,7 +39,7 @@ send_mail() {
 }
 
 
-true
+false
 if [[ $? -ne 0 ]]
 then
 	MAIL_FILE=fail.html
@@ -49,16 +50,7 @@ else
 	MAIL_FILE=success.html
 	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
-fi
-
-if [[ $JOB_TYPE == presubmit ]]
-then
-	echo "hai" > manifest.yaml
-	MAIL_FILE=template22.html
-	MAIL_ATTACHMENT=manifest.yaml
-	send_mail
-fi	
-		
+fi		
 
 echo "The values used were $JOB_TYPE and $MAIL_FILE"
 env
