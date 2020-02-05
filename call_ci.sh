@@ -51,13 +51,6 @@ else
 	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
 fi
-if [[ $JOB_TYPE == postsubmit ]]
-then
-        echo "hai" > manifest.yaml
-        MAIL_FILE=template22.html
-        MAIL_ATTACHMENT=manifest.yaml
-        send_mail
-fi
 
 echo "The values used were $JOB_TYPE and $MAIL_FILE"
 env
