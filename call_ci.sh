@@ -11,7 +11,7 @@
 SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
 RECEIVER=$(cat $MAILID_FILE| grep $REPO_OWNER | cut -d : -f 2 )
-CC_USER=shenayakhan94567@gmail.com
+CC_USER=adeebaaslam165@gmail.com
 MAIL_FILE=''
 MAIL_ATTACHMENT=''
 
