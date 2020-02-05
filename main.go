@@ -41,7 +41,7 @@ func main() {
 		smptPort}
 
 	m := mail.NewMessage()
-        m.SetHeader("Subject", "Prow Job Info",prnumber)
+        m.SetHeader("Subject", "Prow Job failed for jet PR" , prnumber)
 	m.SetHeader("From", sender)
 	m.SetHeader("To", receiver)
 	m.SetAddressHeader("Cc", ccUser, "The great")
