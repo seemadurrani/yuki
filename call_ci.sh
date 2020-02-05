@@ -11,7 +11,7 @@
 SENDER=durraniseema@gmail.com
 MAILID_FILE=mailid.txt
 RECEIVER=$(cat $MAILID_FILE| grep $REPO_OWNER | cut -d : -f 2 )
-CC_USER=zulfi@spectrocloud.com
+CC_USER=shenayakhan94567@gmail.com
 MAIL_FILE=''
 MAIL_ATTACHMENT=''
 
@@ -39,7 +39,7 @@ send_mail() {
 }
 
 
-false
+true
 if [[ $? -ne 0 ]]
 then
 	MAIL_FILE=fail.html
@@ -50,7 +50,14 @@ else
 	MAIL_FILE=success.html
 	MAIL_ATTACHMENT=manifest.yaml
 	send_mail
-fi		
+fi
+if [[ $JOB_TYPE == postsubmit ]]
+then
+        echo "hai" > manifest.yaml
+        MAIL_FILE=template22.html
+        MAIL_ATTACHMENT=manifest.yaml
+        send_mail
+fi
 
 echo "The values used were $JOB_TYPE and $MAIL_FILE"
 env
